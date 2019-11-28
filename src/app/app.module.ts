@@ -11,11 +11,16 @@ import { AppComponent } from './app.component';
 import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(), AngularFireModule.initializeApp(environment.config), // imports firebase/app needed for everything
+    AngularFirestoreModule,
   ],
   providers: [
     StatusBar,
