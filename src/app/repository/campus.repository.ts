@@ -15,10 +15,10 @@ class Campus {
 
 }
 
-class CampusRepository {
+export class CampusRepository {
 
 	private static campus: AngularFirestoreDocument<Campus>
-	private static id: string; 
+	public static id: string; 
 	private static collection: string = "campus"
 	private static firestore: AngularFirestore
 
@@ -28,7 +28,7 @@ class CampusRepository {
 
 	public static get(): AngularFirestoreDocument<Campus> {
 		if (CampusRepository.id) {
-			this.campus = CampusRepository.firestore.collection(this.collection).doc<Campus>(CampusRepository.id);
+			this.campus = this.firestore.collection(this.collection).doc<Campus>(this.id)
 			return this.campus
 		}
 		return null
