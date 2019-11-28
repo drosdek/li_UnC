@@ -1,10 +1,11 @@
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+
 class Campus {
 
-	private nome: String
-	private id: String
-	private descricao: String
+	private nome: string
+	private id: string
+	private descricao: string
 
 	constructor(nome, descricao, id = null) {
 		this.nome = nome
@@ -16,15 +17,21 @@ class Campus {
 
 class CampusRepository {
 
-	private campus: Observable<Campus>
-	private collection: String = "campus"
-	private firestore: AngularFirestore
+	private static campus: AngularFirestoreDocument<Campus>
+	private static id: string; 
+	private static collection: string = "campus"
+	private static firestore: AngularFirestore
 
-	constructor() { }
+	constructor(id: string = null) {
+		CampusRepository.id = id 
+	}
 
-	public get(): Observable<Campus> {
-		this.campus = this.firestore.collection(this.collection).valueChanges()
-		return this.campus
+	public static get(): AngularFirestoreDocument<Campus> {
+		if (CampusRepository.id) {
+			this.campus = CampusRepository.firestore.collection(this.collection).doc<Campus>(CampusRepository.id);
+			return this.campus
+		}
+		return null
 	}
 
 }
