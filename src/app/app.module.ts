@@ -13,7 +13,6 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
-
 import { QRScanner } from '@ionic-native/qr-scanner/ngx';
 
 @NgModule({
@@ -21,12 +20,12 @@ import { QRScanner } from '@ionic-native/qr-scanner/ngx';
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(),
     IonicStorageModule.forRoot(), AngularFireModule.initializeApp(environment.config), // imports firebase/app needed for everything
-    AngularFirestoreModule, QRScanner 
+    AngularFirestoreModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    Camera,
+    QRScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
