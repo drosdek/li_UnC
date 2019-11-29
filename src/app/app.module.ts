@@ -14,12 +14,14 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 
+import { QRScanner } from '@ionic-native/qr-scanner/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(),
     IonicStorageModule.forRoot(), AngularFireModule.initializeApp(environment.config), // imports firebase/app needed for everything
-    AngularFirestoreModule,
+    AngularFirestoreModule, QRScanner 
   ],
   providers: [
     StatusBar,
