@@ -1,4 +1,10 @@
 <ion-app>
-
+  <h1 style="color: red;">{{show}}</h1>
   
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="qr-scanner" margin (click)="goToQrScan()"></ion-icon>
+      </ion-fab-button>
+      
+    </ion-fab>
 </ion-app>
