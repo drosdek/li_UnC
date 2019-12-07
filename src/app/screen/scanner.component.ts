@@ -21,6 +21,11 @@ export class ScannerComponent {
 		this.goToQrScan()
 	}
 
+	ionViewWillLeave() {
+		this.qrScanner.show()
+		this.qrScanner.destroy()
+	}
+
 	goToQrScan() {
 		this.qrScanner.prepare()
 			.then((status: QRScannerStatus) => {
