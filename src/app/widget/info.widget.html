@@ -1,18 +1,20 @@
-<ion-header>
+<ion-header translucent>
 	<ion-toolbar>
-		<ion-title>Nome Campus - Local</ion-title>
-		<ion-icon slot="end" name="return-left"></ion-icon>
+		<ion-title >
+			<ion-icon name="information-circle-outline" slot="start" size="large"></ion-icon>
+			{{local.titulo}}
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-button>FECHAR</ion-button>
+		</ion-buttons>
 	</ion-toolbar>
 </ion-header>
-
-<ion-item>
+<ion-content padding>
 	<ion-label>
-		<p>GTI</p>
-		<h1>Laboratorio GTI</h1>
+		<p>{{campus.nome}}</p>
+		<h1>{{local.titulo}}</h1>
 	</ion-label>
-</ion-item>
-<div padding>
-	<ion-text color="dark">
+	<ion-text color="dark" padding>
 		<div class="ion-text-wrap">{{local.descricao}}</div>
 	</ion-text>
-</div>
+</ion-content>
