@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { QRScanner, QRScannerStatus } from "@ionic-native/qr-scanner/ngx";
+import { Router } from '@angular/router';
+import { LocaisRepository } from '../repository/locais.repository';
+import { CampusRepository } from '../repository/campus.repository';
 
 @Component({
 	selector: 'app-scanner',
@@ -11,42 +14,50 @@ export class ScannerComponent {
 	isOn = false
 	scannedData: {}
 
-	constructor(public qrScanCtrl: QRScanner) {
+	constructor(
+		private qrScanner: QRScanner,
+		private router: Router,
+	) {
 		this.goToQrScan()
 	}
 
 	goToQrScan() {
-		this.qrScanCtrl.prepare()
+		this.qrScanner.prepare()
 			.then((status: QRScannerStatus) => {
 				if (status.authorized) {
-					// camera permission was granted
-					this.isOn = true;
+					this.qrScanner.hide()
+					let scanSub = this.qrScanner.scan().subscribe(async (text: string) => {
 
-					// start scanning
-					const scanSub = this.qrScanCtrl.scan().subscribe((text: string) => {
-						console.log('Scanned something', text);
+						try {
+							let data = JSON.parse(text)
 
+							if ("campus" in data && "local" in data) {
 
-						this.isOn = false;
+								await this.fetchData(data)
 
-						this.QRSCANNED_DATA = text;
-						if (this.QRSCANNED_DATA !== '') {
-							this.closeScanner();
-							scanSub.unsubscribe();
+								this.qrScanner.show()
+								this.router.navigateByUrl('/main')
+								this.qrScanner.destroy()
+								
+								scanSub.unsubscribe()
+							}
+						} catch (e) {
+							console.log(e)
+							this.goToQrScan()
 						}
-
+						
 					});
 
-				} else if (status.denied) {
-					console.log('camera permission denied');
-					this.qrScanCtrl.openSettings();
 				} else {
+					this.router.navigateByUrl('/main')
 				}
 			})
-			.catch((e: any) => console.log('Error is', e));
+			.catch((e: any) => console.log('Error is', e))
 	}
 
-	closeScanner() {
-		this.isOn = false
+	async fetchData(data) {
+		await new CampusRepository(data.campus)
+		await LocaisRepository.get()
+		LocaisRepository.id = data.local
 	}
 }
