@@ -10,6 +10,7 @@ import { LocaisRepository } from '../repository/locais.repository';
 })
 export class MainComponent {
 	private isSelected: boolean = false;
+	private modal
 
 	constructor(
 		private router: Router,
@@ -22,6 +23,10 @@ export class MainComponent {
 	showModal() {
 		this.presentModal()
 	}
+
+	hideModal() {
+		this.modal.dismiss()
+	}
 	
 	goScanner() {
 		this.router.navigate(['/scan'])
@@ -32,10 +37,13 @@ export class MainComponent {
 	}
 
 	async presentModal() {
-		const modal = await this.modalController.create({
-			component: InfoWidget
-		});
-		return await modal.present();
+		this.modal = await this.modalController.create({
+			component: InfoWidget,
+			componentProps: {
+				onClose: this.hideModal
+			}
+		})
+		return await this.modal.present()
 	}
 
 }

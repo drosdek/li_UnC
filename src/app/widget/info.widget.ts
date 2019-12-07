@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Local, LocaisRepository } from "../repository/locais.repository";
 import { Campus, CampusRepository } from "../repository/campus.repository";
 
@@ -10,6 +10,8 @@ import { Campus, CampusRepository } from "../repository/campus.repository";
 export class InfoWidget { 
 	private campus: Campus = new Campus( "", "")
 	private local: Local = new Local("", "", "")
+
+	@Input('onClose') onClose: Function
 
 	constructor() {
 		LocaisRepository.get().forEach(items => {
