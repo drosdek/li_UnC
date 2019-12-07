@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { MainComponent } from './main.component';
+import { InfoWidget } from '../widget/info.widget';
 
 @NgModule({
 	imports: [
@@ -18,6 +19,9 @@ import { MainComponent } from './main.component';
 			}
 		])
 	],
-	declarations: [MainComponent]
+	declarations: [MainComponent, InfoWidget],
+	entryComponents: [
+		InfoWidget
+	]
 })
 export class MainComponentModule { }

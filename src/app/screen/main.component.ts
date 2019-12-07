@@ -1,4 +1,3 @@
-import { InfoWidgetModule } from './../widget/info.module.widget';
 import { ModalController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -23,7 +22,7 @@ export class MainComponent {
 
 	async presentModal() {
 		const modal = await this.modalController.create({
-			component: InfoWidgetModule
+			component: InfoWidget
 		});
 		return await modal.present();
 	}
