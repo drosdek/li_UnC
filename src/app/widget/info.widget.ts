@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Local } from "../repository/locais.repository";
+import { Campus } from "../repository/campus.repository";
 
 @Component({
 	selector: 'info-widget',
@@ -7,6 +8,10 @@ import { Local } from "../repository/locais.repository";
 })
 
 export class InfoWidget { 
+	private campus: Campus = new Campus(
+		"Testazera",
+		"Misuaba"
+	)
 	private local: Local = new Local(
 		"teste",
 		"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut iaculis vehicula rutrum. Vivamus sed euismod eros. Pellentesque dapibus, eros a dignissim accumsan, ligula erat mattis nisi, ornare vestibulum dui turpis et ligula. Vestibulum ultricies in metus non viverra. Nam ornare ullamcorper tempus. Nam leo mauris, ullamcorper sit amet laoreet sit amet, semper id massa. Nulla facilisi. Donec mattis iaculis nisl, ut varius nibh sollicitudin et. Nulla ac iaculis lectus. Proin lacus lacus, dictum nec odio quis, pharetra hendrerit metus. Aliquam non nisl facilisis, viverra mi ut, vehicula magna. Maecenas posuere est eget justo bibendum finibus. Mauris at fermentum magna, ut imperdiet ligula. Cras lacinia purus hendrerit nisl interdum, ac feugiat sapien maximus. AQUI E O FIM PARAGRAFO 1.\
