@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { QRScanner, QRScannerStatus } from "@ionic-native/qr-scanner/ngx";
+import { Component } from '@angular/core';
 
 @Component({
 	selector: 'widget-menu',
