@@ -6,19 +6,25 @@ import { CampusRepository } from '../repository/campus.repository';
 
 @Component({
 	selector: 'app-scanner',
-	templateUrl: './scanner.component.html'
+	templateUrl: './scanner.component.html',
+	styleUrls: ['./scanner.component.scss']
 })
 export class ScannerComponent {
 	encodedData = '';
 	QRSCANNED_DATA: string
 	isOn = false
 	scannedData: {}
+	private help: boolean = true
 
 	constructor(
 		private qrScanner: QRScanner,
 		private router: Router,
 	) {
 		this.goToQrScan()
+	}
+
+	handleHelp(){
+		this.help = !this.help
 	}
 
 	ionViewWillLeave() {
