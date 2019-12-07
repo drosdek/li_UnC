@@ -4,7 +4,7 @@
 	</ion-fab-button>
 
 	<ion-fab-list side="top">
-		<ion-fab-button>
+		<ion-fab-button *ngIf="isSelected">
 			<ion-icon ios="ios-information-circle-outline" md="ios-information-circle-outline" (click)="showModal()">
 			</ion-icon>
 		</ion-fab-button>

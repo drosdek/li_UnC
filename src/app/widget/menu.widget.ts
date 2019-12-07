@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { LocaisRepository } from '../repository/locais.repository';
 
 @Component({
 	selector: 'menu-widget',
@@ -8,4 +9,5 @@ import { Component, Input } from '@angular/core';
 export class MenuWidget {
 	@Input('show-modal') showModal: Function
 	@Input('go-scanner') goScanner: Function
+	@Input('is-selected') isSelected: boolean
 }
