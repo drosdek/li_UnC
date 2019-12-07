@@ -1,11 +1,10 @@
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 
-class Campus {
+export class Campus {
 
-	private nome: string
-	private id: string
-	private descricao: string
+	public nome: string
+	public id: string
+	public descricao: string
 
 	constructor(nome, descricao, id = null) {
 		this.nome = nome
@@ -20,7 +19,7 @@ export class CampusRepository {
 	private static campus: AngularFirestoreDocument<Campus>
 	public static id: string; 
 	private static collection: string = "campus"
-	private static firestore: AngularFirestore
+	public static firestore: AngularFirestore
 
 	constructor(id: string = null) {
 		CampusRepository.id = id 

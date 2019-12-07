@@ -6,12 +6,12 @@ class _Mapwize {
 	url: string
 }
 
-class Local {
+export class Local {
 
-	private titulo: string
-	private id: string
-	private descricao: string
-	private mapwize: _Mapwize
+	public titulo: string
+	public id: string
+	public descricao: string
+	public mapwize: _Mapwize
 
 	constructor(titulo, descricao, mapwize, id = null) {
 		this.titulo = titulo
@@ -22,19 +22,21 @@ class Local {
 
 }
 
-class LocaisRepository {
+export class LocaisRepository {
 
 	private static locais: Observable<Local[]>
-	private static firestore: AngularFirestore
+	public static firestore: AngularFirestore
+	public static id: string
 	private static collection: string = "locais"
 
 	public static get(): Observable<Local[]> {
 		if (CampusRepository.id) {
-			this.locais = this.firestore.collection<Local>(this.collection + "/" + CampusRepository.id).valueChanges()
+			this.locais = this.firestore.collection<Local>(
+				this.collection + "/" + CampusRepository.id + "/" + this.collection
+			).valueChanges()
 			return this.locais
 		}
 		return null
 	}
 
-	
 }
