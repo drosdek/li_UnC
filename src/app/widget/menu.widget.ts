@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-	selector: 'widget-menu',
+	selector: 'menu-widget',
 	templateUrl: 'menu.widget.html'
 })
 
-export class Menu { }
+export class MenuWidget {
+	@Input('show-modal') showModal: Function
+	@Input('go-scanner') goScanner: Function
+}

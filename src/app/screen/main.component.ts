@@ -13,11 +13,16 @@ export class MainComponent {
 		private router: Router,
 		public modalController: ModalController
 	) {
-
+		this.showModal = this.showModal.bind(this)
+		this.goScanner = this.goScanner.bind(this)
 	}
 
 	showModal() {
 		this.presentModal()
+	}
+	
+	goScanner() {
+		this.router.navigate(['/scan'])
 	}
 
 	async presentModal() {
