@@ -3,6 +3,7 @@ import { QRScanner, QRScannerStatus } from "@ionic-native/qr-scanner/ngx";
 import { Router } from '@angular/router';
 import { LocaisRepository } from '../repository/locais.repository';
 import { CampusRepository } from '../repository/campus.repository';
+import { timeout } from 'q';
 
 @Component({
 	selector: 'app-scanner',
@@ -14,7 +15,7 @@ export class ScannerComponent {
 	QRSCANNED_DATA: string
 	isOn = false
 	scannedData: {}
-	private help: boolean = true
+	private help: boolean = false
 
 	constructor(
 		private qrScanner: QRScanner,
@@ -37,6 +38,7 @@ export class ScannerComponent {
 			.then((status: QRScannerStatus) => {
 				if (status.authorized) {
 					this.qrScanner.hide()
+					this.help = !this.help
 					let scanSub = this.qrScanner.scan().subscribe(async (text: string) => {
 
 						try {
@@ -59,11 +61,12 @@ export class ScannerComponent {
 						
 					});
 
-				} else {
-					this.router.navigateByUrl('/main')
 				}
 			})
-			.catch((e: any) => console.log('Error is', e))
+			.catch((e) => {
+				console.log('Error is', e)
+				this.router.navigate(['/main'])
+			})
 	}
 
 	async fetchData(data) {
