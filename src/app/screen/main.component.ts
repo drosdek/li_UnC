@@ -24,14 +24,22 @@ export class MainComponent {
 	) {
 		this.showModal = this.showModal.bind(this)
 		this.goScanner = this.goScanner.bind(this)
+		this.openWebPage = this.openWebPage.bind(this)
 	}
 
-	openWebPage(url: 'www.google.com.br') {
+	openWebPage(url = 'https://www.google.com.br') {
 		const options: InAppBrowserOptions = {
-			zoom:"no"
+			zoom: "no",
+			toolbar: "no",
+			footer: "no",
+			hideurlbar: "yes",
+			hidenavigationbuttons: "yes",
+			fullscreen: "yes",
+			location: "no"
 		}
 
 		const browser = this.inAppBrowser.create(url, '_self', options)
+
 	}
 
 	showModal() {
@@ -41,7 +49,7 @@ export class MainComponent {
 	hideModal() {
 		this.modal.dismiss()
 	}
-	
+
 	goScanner() {
 		this.router.navigate(['/scan'])
 	}

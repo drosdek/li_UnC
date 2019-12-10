@@ -10,5 +10,6 @@ export class MenuWidget {
 	@Input('show-modal') showModal: Function
 	@Input('go-scanner') goScanner: Function
 	@Input('go-map') goMap: Function
+	@Input('openWebPage') openWebPage: Function
 	@Input('is-selected') isSelected: boolean
 }
