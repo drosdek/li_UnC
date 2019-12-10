@@ -1,3 +1,4 @@
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { InfoWidget } from './widget/info.widget';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -33,7 +34,8 @@ import { AppRoutingModule } from './app-routing.module';
 		StatusBar,
 		SplashScreen,
 		QRScanner,
-		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+		InAppBrowser
 	],
 	bootstrap: [AppComponent]
 })

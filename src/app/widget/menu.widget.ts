@@ -9,5 +9,6 @@ import { LocaisRepository } from '../repository/locais.repository';
 export class MenuWidget {
 	@Input('show-modal') showModal: Function
 	@Input('go-scanner') goScanner: Function
+	@Input('go-map') goMap: Function
 	@Input('is-selected') isSelected: boolean
 }
