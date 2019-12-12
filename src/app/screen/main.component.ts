@@ -15,7 +15,7 @@ export class MainComponent {
 	private isSelected: boolean = false;
 	private modal
 
-	url: string;
+	url: 'https://maps.mapwize.io/#/p/campus_-_mafra/entrada_principal?k=7cc67cb19d86484e&u=default_universe&l=pt&z=20&embed=true&menu=false&venueId=5dc354fcafef07002cbc682c';
 
 	constructor(
 		private router: Router,
@@ -27,7 +27,7 @@ export class MainComponent {
 		this.openWebPage = this.openWebPage.bind(this)
 	}
 
-	openWebPage(url = 'https://www.google.com.br') {
+	openWebPage(url = 'https://maps.mapwize.io/#/p/campus_-_mafra/entrada_principal?k=7cc67cb19d86484e&u=default_universe&l=pt&z=20&embed=true&menu=false&venueId=5dc354fcafef07002cbc682c') {
 		const options: InAppBrowserOptions = {
 			zoom: "no",
 			toolbar: "no",

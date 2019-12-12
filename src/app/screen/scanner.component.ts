@@ -43,6 +43,7 @@ export class ScannerComponent {
 
 						try {
 							let data = JSON.parse(text)
+							console.log('Scanned something', data);
 
 							if ("campus" in data && "local" in data) {
 

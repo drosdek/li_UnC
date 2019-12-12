@@ -3,7 +3,8 @@ import { LocaisRepository } from '../repository/locais.repository';
 
 @Component({
 	selector: 'menu-widget',
-	templateUrl: 'menu.widget.html'
+	templateUrl: 'menu.widget.html',
+	styleUrls: ['./menu.widget.scss']
 })
 
 export class MenuWidget {
